@@ -40507,7 +40507,9 @@ GameObject:
   - component: {fileID: 3045189503624972628}
   - component: {fileID: 4103564018390809798}
   - component: {fileID: 5836203365565900854}
+  - component: {fileID: 3287920706117143359}
   - component: {fileID: 7805904282286979799}
+  - component: {fileID: -3514300363651290825}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -40586,6 +40588,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a34e0a6478d1b8d4e8f7b5ed6b2aa89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
+--- !u!114 &3287920706117143359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251914165914023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4147b60b0611e42b40f73757b82fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkPosition:
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  networkRotation:
+    m_InternalValue: {x: 0, y: 0, z: 0, w: 1}
+  networkPositionVelocity: {x: 0, y: 0, z: 0}
+  networkPositionSmoothTime: 0.1
+  networkRotationSmoothTime: 0.1
 --- !u!114 &7805904282286979799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40598,6 +40620,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adc13c0c0663b754190e9b7fb4bc085c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  verticalMovement: 0
+  horizontalMovement: 0
+  moveAmount: 0
+  walkingSpeed: 2
+  runningSpeed: 5
+  rotationSpeed: 15
+--- !u!143 &-3514300363651290825
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251914165914023426}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.9
+  m_Radius: 0.23
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!1 &5253632756452689881
 GameObject:
   m_ObjectHideFlags: 0
