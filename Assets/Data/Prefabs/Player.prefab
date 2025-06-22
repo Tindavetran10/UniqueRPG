@@ -40509,6 +40509,7 @@ GameObject:
   - component: {fileID: 5836203365565900854}
   - component: {fileID: 3287920706117143359}
   - component: {fileID: 7805904282286979799}
+  - component: {fileID: 3221758322802750450}
   - component: {fileID: -3514300363651290825}
   m_Layer: 0
   m_Name: Player
@@ -40544,7 +40545,7 @@ Animator:
   m_GameObject: {fileID: 5251914165914023426}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 038320a534bd8b444b43734860d1a211, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9978da00d453c7142aae57241b2b7721, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -40626,6 +40627,18 @@ MonoBehaviour:
   walkingSpeed: 2
   runningSpeed: 5
   rotationSpeed: 15
+--- !u!114 &3221758322802750450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251914165914023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20619ea1f5e90ef43985f0d6dc8f115d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!143 &-3514300363651290825
 CharacterController:
   m_ObjectHideFlags: 0
