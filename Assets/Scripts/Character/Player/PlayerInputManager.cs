@@ -7,6 +7,7 @@ public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInputManager instance;
 
+    public PlayerManager player;
     PlayerControls playerControls;
 
     [Header("Player Movement Input")]
@@ -111,6 +112,13 @@ public class PlayerInputManager : MonoBehaviour
         {
             moveAmount = 1;
         }
+
+        if (player == null)
+        {
+            return;
+        }
+
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
     }
 
     private void HandleCameraMovementInput()
