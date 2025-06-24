@@ -23,6 +23,7 @@ public class PlayerInputManager : MonoBehaviour
 
     [Header("PLAYER ACTIONS INPUT")]
     [SerializeField] bool dodgeInput = false;
+    [SerializeField] bool sprintInput = false;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class PlayerInputManager : MonoBehaviour
         HandlePlayerMovementInput();
         HandleCameraMovementInput();
         HandleDodgeInput();
+        HandleSprinting();
     }
 
     private void OnSceneChanged(Scene oldScene, Scene newScene)
@@ -80,6 +82,11 @@ public class PlayerInputManager : MonoBehaviour
             playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
             playerControls.PlayerCamera.Movement.performed += i => cameraInput = i.ReadValue<Vector2>();
             playerControls.PlayerActions.Dodge.performed += i => dodgeInput = true;
+
+            // Holding the INPUT, SET the BOOL to TRUE
+            playerControls.PlayerActions.Sprint.performed += i => sprintInput = true;
+            // Releasing the INPUT, SET the BOOL to FALSE
+            playerControls.PlayerActions.Sprint.canceled += i => sprintInput = false;
         }
 
         playerControls.Enable();
@@ -128,7 +135,7 @@ public class PlayerInputManager : MonoBehaviour
             return;
         }
 
-        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount);
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0, moveAmount, player.playerNetworkManager.isSprinting.Value);
     }
 
     private void HandleCameraMovementInput()
@@ -138,7 +145,7 @@ public class PlayerInputManager : MonoBehaviour
     }
     #endregion
 
-    #region Dodge
+    #region Actions
     private void HandleDodgeInput()
     {
         if (dodgeInput)
@@ -150,5 +157,19 @@ public class PlayerInputManager : MonoBehaviour
             player.playerLocomotionManager.AttemptToPerformDodge();
         }
     }
+
+    private void HandleSprinting()
+    {
+        if (sprintInput)
+        {
+            player.playerLocomotionManager.HandleSprinting();
+        }
+        else
+        {
+            player.playerNetworkManager.isSprinting.Value = false;
+        }
+    }
     #endregion
+
+
 }
