@@ -40570,7 +40570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2019355768
+  GlobalObjectIdHash: 3874475409
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -40600,6 +40600,7 @@ MonoBehaviour:
   canMove: 1
   playerAnimatorManager: {fileID: 0}
   playerLocomotionManager: {fileID: 0}
+  playerNetworkManager: {fileID: 0}
 --- !u!114 &3287920706117143359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40625,6 +40626,8 @@ MonoBehaviour:
     m_InternalValue: 0
   moveAmount:
     m_InternalValue: 0
+  isSprinting:
+    m_InternalValue: 0
 --- !u!114 &7805904282286979799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40641,7 +40644,8 @@ MonoBehaviour:
   horizontalMovement: 0
   moveAmount: 0
   walkingSpeed: 2
-  runningSpeed: 5
+  runningSpeed: 3.5
+  sprintingSpeed: 6.5
   rotationSpeed: 15
 --- !u!114 &1932622934613750447
 MonoBehaviour:
