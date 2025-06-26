@@ -17,10 +17,11 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] float runningSpeed = 3.5f;
     [SerializeField] float sprintingSpeed = 6.5f;
     [SerializeField] float rotationSpeed = 15;
-
+    [SerializeField] int sprintingStaminaCost = 2;
 
     [Header("Dodge")]
     private Vector3 rollDirection;
+    [SerializeField] float dodgeStaminaCost = 25;
 
     protected override void Awake()
     {
@@ -125,18 +126,27 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
 
         // If player is out of STAMINA, Set sprinting to FALSE
+        if (player.playerNetworkManager.currentStamina.Value <= 0)
+        {
+            player.playerNetworkManager.isSprinting.Value = false;
+            return;
+        }
 
         // If player is moving, Set sprinting to TRUE
         if (moveAmount >= 0.5f)
         {
             player.playerNetworkManager.isSprinting.Value = true;
         }
+        // If player is Stationary, Set Sprinting to FALSE
         else
         {
             player.playerNetworkManager.isSprinting.Value = false;
         }
 
-        // If player is Stationary, Set Sprinting to FALSE
+        if (player.playerNetworkManager.isSprinting.Value)
+        {
+            player.playerNetworkManager.currentStamina.Value -= sprintingStaminaCost * Time.deltaTime;
+        }
     }
 
     public void AttemptToPerformDodge()
@@ -145,6 +155,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         {
             return;
         }
+
+        if (player.playerNetworkManager.currentStamina.Value <= 0)
+            return;
+
         // If we are moving when we attempt to Dodge, we perform a dodge
         if (PlayerInputManager.instance.moveAmount > 0)
         {
@@ -165,5 +179,7 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             // Perform a backstep animation
             player.playerAnimatorManager.PlayerTargetActionAnimation("Back_Step_01", true, true);
         }
+
+        player.playerNetworkManager.currentStamina.Value -= dodgeStaminaCost;
     }
 }
