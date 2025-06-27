@@ -6,13 +6,32 @@ using UnityEngine.UI;
 
 public class TitleScreenManager : MonoBehaviour
 {
+    public static TitleScreenManager Instance;
+
     [Header("Menus")]
     [SerializeField] GameObject titleScreenMainMenu;
     [SerializeField] GameObject titleScreenLoadMenu;
 
     [Header("Buttons")]
+    [SerializeField] Button mainMenuNewGameButton;
     [SerializeField] Button loadMenuReturnButton;
     [SerializeField] Button mainMenuLoadGameButton;
+
+    [Header("Pop Ups")]
+    [SerializeField] GameObject noCharacterSlotsPopUp;
+    [SerializeField] Button noCharacterSlotsOkayButton;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void StartNetworkAsHost()
     {
@@ -21,8 +40,7 @@ public class TitleScreenManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        WorldSaveGameManager.instance.CreateNewGame();
-        StartCoroutine(WorldSaveGameManager.instance.LoadWorldScene());
+        WorldSaveGameManager.instance.AttemptToCreateNewGame();
     }
 
     public void OpenLoadGameMenu()
@@ -41,5 +59,17 @@ public class TitleScreenManager : MonoBehaviour
 
         // Select the return button first
         mainMenuLoadGameButton.Select();
+    }
+
+    public void DisplayNoFreeCharacterSlotsPopup()
+    {
+        noCharacterSlotsPopUp.SetActive(true);
+        noCharacterSlotsOkayButton.Select();
+    }
+
+    public void CloseNocharacterSlotsPopUp()
+    {
+        noCharacterSlotsPopUp.SetActive(false);
+        mainMenuNewGameButton.Select();
     }
 }
