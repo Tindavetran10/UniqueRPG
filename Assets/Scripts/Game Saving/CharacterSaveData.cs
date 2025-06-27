@@ -6,6 +6,9 @@ using UnityEngine;
 // Since we want to reference this data for every save file, this script is not a monobehaviour and is instead serializable
 public class CharacterSaveData
 {
+    [Header("Scene Index")]
+    public int sceneIndex = 1;
+
     [Header("Character Name")]
     public string characterName = "Character";
 

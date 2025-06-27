@@ -155,6 +155,97 @@ public class WorldSaveGameManager : MonoBehaviour
             return;
         }
 
+        //CharacterSlot_04
+        // Check to see if we can create a new save file 
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_04);
+
+        if (!saveFileDataWriter.CheckToSeeIfFileExists())
+        {
+            // If this profile slot is not taken, make a new one to using this slot
+            currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_04;
+            currentCharacterData = new CharacterSaveData();
+            StartCoroutine(LoadWorldScene());
+            return;
+        }
+
+        //CharacterSlot_05
+        // Check to see if we can create a new save file 
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_05);
+
+        if (!saveFileDataWriter.CheckToSeeIfFileExists())
+        {
+            // If this profile slot is not taken, make a new one to using this slot
+            currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_05;
+            currentCharacterData = new CharacterSaveData();
+            StartCoroutine(LoadWorldScene());
+            return;
+        }
+
+        //CharacterSlot_06
+        // Check to see if we can create a new save file 
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_06);
+
+        if (!saveFileDataWriter.CheckToSeeIfFileExists())
+        {
+            // If this profile slot is not taken, make a new one to using this slot
+            currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_06;
+            currentCharacterData = new CharacterSaveData();
+            StartCoroutine(LoadWorldScene());
+            return;
+        }
+
+        //CharacterSlot_07
+        // Check to see if we can create a new save file 
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_07);
+
+        if (!saveFileDataWriter.CheckToSeeIfFileExists())
+        {
+            // If this profile slot is not taken, make a new one to using this slot
+            currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_07;
+            currentCharacterData = new CharacterSaveData();
+            StartCoroutine(LoadWorldScene());
+            return;
+        }
+
+        //CharacterSlot_08
+        // Check to see if we can create a new save file 
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_08);
+
+        if (!saveFileDataWriter.CheckToSeeIfFileExists())
+        {
+            // If this profile slot is not taken, make a new one to using this slot
+            currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_08;
+            currentCharacterData = new CharacterSaveData();
+            StartCoroutine(LoadWorldScene());
+            return;
+        }
+
+        //CharacterSlot_09
+        // Check to see if we can create a new save file 
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_09);
+
+        if (!saveFileDataWriter.CheckToSeeIfFileExists())
+        {
+            // If this profile slot is not taken, make a new one to using this slot
+            currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_09;
+            currentCharacterData = new CharacterSaveData();
+            StartCoroutine(LoadWorldScene());
+            return;
+        }
+
+        //CharacterSlot_10
+        // Check to see if we can create a new save file 
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(CharacterSlot.CharacterSlot_10);
+
+        if (!saveFileDataWriter.CheckToSeeIfFileExists())
+        {
+            // If this profile slot is not taken, make a new one to using this slot
+            currentCharacterSlotBeingUsed = CharacterSlot.CharacterSlot_10;
+            currentCharacterData = new CharacterSaveData();
+            StartCoroutine(LoadWorldScene());
+            return;
+        }
+
         // If there are no Free Slots, Notify the player
         TitleScreenManager.Instance.DisplayNoFreeCharacterSlotsPopup();
     }
@@ -187,6 +278,16 @@ public class WorldSaveGameManager : MonoBehaviour
 
         // Write that info onto a JSON file, saved to this machine
         saveFileDataWriter.CreateNewCharacterSaveFile(currentCharacterData);
+    }
+
+    public void DeleteGame(CharacterSlot characterSlot)
+    {
+        // Choose file base on name
+        saveFileDataWriter = new SaveFileDataWriter();
+        saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+        saveFileDataWriter.saveFileName = DecideCharacterFileNameBasedOnCharacterSlotBeingUsed(characterSlot);
+
+        saveFileDataWriter.DeleteSaveFile();
     }
 
     // Load all character profiles on device when starting game
@@ -228,7 +329,10 @@ public class WorldSaveGameManager : MonoBehaviour
 
     public IEnumerator LoadWorldScene()
     {
-        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
+        // Use this for 1 World Scene
+        //AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
+
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(currentCharacterData.sceneIndex);
 
         player.LoadGameDataFromCurrentCharacterData(ref currentCharacterData);
 
