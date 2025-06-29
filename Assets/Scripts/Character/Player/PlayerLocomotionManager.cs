@@ -19,6 +19,13 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     [SerializeField] float rotationSpeed = 15;
     [SerializeField] int sprintingStaminaCost = 2;
 
+    [Header("Jump")]
+    [SerializeField] float jumpHeight = 4;
+    [SerializeField] float jumpStaminaCost = 25;
+    [SerializeField] float jumpForwardSpeed = 5;
+    [SerializeField] float freeFallSpeed = 2;
+    private Vector3 jumpDirection;
+
     [Header("Dodge")]
     private Vector3 rollDirection;
     [SerializeField] float dodgeStaminaCost = 25;
@@ -55,6 +62,8 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
     {
         HandleGroundedMovement();
         HandleRotation();
+        HandleJumpingMovement();
+        HandleFreeFallMovement();
     }
 
     private void GetMovementValues()
@@ -92,6 +101,28 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
             {
                 player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
             }
+        }
+    }
+
+    private void HandleJumpingMovement()
+    {
+        if (player.isJumping)
+        {
+            player.characterController.Move(jumpDirection * jumpForwardSpeed * Time.deltaTime);
+        }
+    }
+
+    private void HandleFreeFallMovement()
+    {
+        if (!player.isGrounded)
+        {
+            Vector3 freeFallDirection;
+
+            freeFallDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
+            freeFallDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
+            freeFallDirection.y = 0f;
+
+            player.characterController.Move(freeFallDirection * freeFallSpeed * Time.deltaTime);
         }
     }
 
@@ -181,5 +212,59 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         }
 
         player.playerNetworkManager.currentStamina.Value -= dodgeStaminaCost;
+    }
+    
+    public void AttemptToPerformJump()
+    {
+        // If we are performing a general action, we do not want to allow a jump
+        if (player.isPerformingAction)
+        {
+            return;
+        }
+
+        if (player.playerNetworkManager.currentStamina.Value <= 0)
+            return;
+
+        if (player.isJumping)
+            return;
+
+
+        if (!player.isGrounded)
+            return;
+
+        // If we are two handing our weapons. play the two handed jump animation, otherwise play the one handed animation
+        player.playerAnimatorManager.PlayerTargetActionAnimation("Main_Jump_01", false);
+
+        player.isJumping = true;
+
+        player.playerNetworkManager.currentStamina.Value -= jumpStaminaCost;
+
+        jumpDirection = PlayerCamera.instance.cameraObject.transform.forward * PlayerInputManager.instance.verticalInput;
+        jumpDirection += PlayerCamera.instance.cameraObject.transform.right * PlayerInputManager.instance.horizontalInput;
+        jumpDirection.y = 0;
+
+        if (jumpDirection != Vector3.zero)
+        {
+            // If we are sprinting, JumpDirection is full distance
+            if (player.playerNetworkManager.isSprinting.Value)
+            {
+                jumpDirection *= 1;
+            }
+            // If we are running, jump direction is at half distance
+            else if (PlayerInputManager.instance.moveAmount > 0.5f)
+            {
+                jumpDirection *= 0.5f;
+            }
+            else if (PlayerInputManager.instance.moveAmount <= 0.5f)
+            {
+                jumpDirection *= 0.25f;
+            }
+        }
+    }
+
+    public void ApplyJumpingVelocity()
+    {
+        // Apply an upward velocity depending on FORCES in our game
+        yVelocity.y = Mathf.Sqrt(jumpHeight * -2 * gravityForce);
     }
 }
