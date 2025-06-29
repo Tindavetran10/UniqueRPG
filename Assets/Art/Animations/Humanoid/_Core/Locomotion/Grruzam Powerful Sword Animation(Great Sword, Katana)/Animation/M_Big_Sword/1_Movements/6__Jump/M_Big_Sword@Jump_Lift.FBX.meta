@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 699f8c1a79281134fa982cc9dc9a66c8
+guid: 61b336dc53140204eb6520c185fdca70
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -974,7 +974,7 @@ ModelImporter:
     second: Grru_Katana
   - first:
       74: 7400000
-    second: Jump_Start
+    second: Jump_Loop
   - first:
       95: 9500000
     second: //RootNode
@@ -1000,10 +1000,10 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 22.382719 mm\n\t'calf_l' : position error = 2.570165 mm\n\t'foot_l'
-      : position error = 11.989901 mm\n\t'ball_l' : position error = 10.411240 mm\n\t'thigh_r'
-      : position error = 22.425655 mm\n\t'calf_r' : position error = 23.064199 mm\n\t'foot_r'
-      : position error = 16.493832 mm\n\t'ball_r' : position error = 12.272939 mm\n"
+      : position error = 6.581313 mm\n\t'calf_l' : position error = 13.004936 mm\n\t'foot_l'
+      : position error = 2.214194 mm\n\t'ball_l' : position error = 1.041917 mm\n\t'thigh_r'
+      : position error = 6.927368 mm\n\t'calf_r' : position error = 20.077051 mm\n\t'foot_r'
+      : position error = 2.237085 mm\n\t'ball_r' : position error = 6.070225 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar
@@ -1023,11 +1023,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jump_Start
+      name: Jump_Loop
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 13
+      lastFrame: 7
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1046,14 +1046,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.1816514
-        functionName: ApplyJumpingVelocity
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask:
       - path: 
         weight: 1
