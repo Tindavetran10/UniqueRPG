@@ -40512,6 +40512,7 @@ GameObject:
   - component: {fileID: 7771568658708623764}
   - component: {fileID: 1932622934613750447}
   - component: {fileID: 2632760476005214533}
+  - component: {fileID: 773184596463295012}
   - component: {fileID: -3514300363651290825}
   - component: {fileID: -5433259818047887757}
   m_Layer: 6
@@ -40571,7 +40572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3874475409
+  GlobalObjectIdHash: 2019355768
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -40730,14 +40731,16 @@ MonoBehaviour:
   verticalMovement: 0
   horizontalMovement: 0
   moveAmount: 0
-  jumpHeight: 4
   walkingSpeed: 2
   runningSpeed: 3.5
   sprintingSpeed: 6.5
   rotationSpeed: 15
   sprintingStaminaCost: 2
-  dodgeStaminaCost: 25
+  jumpHeight: 4
   jumpStaminaCost: 25
+  jumpForwardSpeed: 5
+  freeFallSpeed: 2
+  dodgeStaminaCost: 25
 --- !u!114 &7771568658708623764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40776,6 +40779,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d580d06576ff90458e0763d188a8350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &773184596463295012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5251914165914023426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637372060b7e7d241ba87ec052ed89e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectToTest: {fileID: 11400000, guid: 2049da28a94394e47b09e7f1a628a366, type: 2}
+  processEffect: 0
 --- !u!143 &-3514300363651290825
 CharacterController:
   m_ObjectHideFlags: 0
