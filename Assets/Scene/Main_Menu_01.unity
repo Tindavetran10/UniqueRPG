@@ -613,8 +613,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1283310537}
   m_HandleRect: {fileID: 1283310536}
   m_Direction: 3
-  m_Value: 1.0000002
-  m_Size: 0.5326227
+  m_Value: 1.0000001
+  m_Size: 0.5326226
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2257,7 +2257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 937.5, y: -109.05745}
+  m_AnchoredPosition: {x: 1041.6666, y: -109.05745}
   m_SizeDelta: {x: 205.49, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962272464
@@ -2303,18 +2303,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 905451729}
+    m_SelectOnRight: {fileID: 905451729}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9819246, g: 1, b: 0.2396226, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.5294118, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.4792453, g: 0.21990952, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2333,7 +2333,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 962272464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 623904483}
+        m_TargetAssemblyTypeName: TitleScreenManager, Assembly-CSharp
+        m_MethodName: DeleteCharacterSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &962272466
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5442,6 +5454,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 142514038988821239, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142514038988821239, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 174929996471526014, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 174929996471526014, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 174929996471526014, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 174929996471526014, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1532202398806636147, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
       propertyPath: m_Name
       value: Player UI Manager
@@ -5484,6 +5520,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598007537203843737, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722641499854543063, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722641499854543063, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3722641499854543063, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7157431286536714278, guid: 5d4c4fe0441882148843a56c8c488843, type: 3}
