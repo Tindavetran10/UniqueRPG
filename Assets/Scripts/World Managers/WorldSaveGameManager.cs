@@ -255,11 +255,13 @@ public class WorldSaveGameManager : MonoBehaviour
         // Saves the newly created character stats, and items ( when creation scene is added)
 
         // Set the Max Value for the Health Bar
+        player.playerNetworkManager.vitality.Value = 10;
         player.playerNetworkManager.maxHealth.Value = player.playerStatsManager.CalculateHealthBasedOnVitalityLevel(player.playerNetworkManager.vitality.Value);
         PlayerUIManager.instance.playerUIHudManager.SetMaxHealthValue(player.playerNetworkManager.maxHealth.Value);
         player.playerNetworkManager.currentHealth.Value = player.playerNetworkManager.maxHealth.Value;
 
         // Set the Max Value for the Stamina Bar
+        player.playerNetworkManager.endurance.Value = 10;
         player.playerNetworkManager.maxStamina.Value = player.playerStatsManager.CalculateStaminaBasedOnEnduranceLevel(player.playerNetworkManager.endurance.Value);
         PlayerUIManager.instance.playerUIHudManager.SetMaxStaminaValue(player.playerNetworkManager.maxStamina.Value);
         player.playerNetworkManager.currentStamina.Value = player.playerNetworkManager.maxStamina.Value;
