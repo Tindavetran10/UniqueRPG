@@ -15,7 +15,7 @@ public class PlayerUIHudManager : MonoBehaviour
         staminaBar.gameObject.SetActive(true);
     }
 
-    public void SetNewHealthValue(float oldValue, float newValue)
+    public void SetNewHealthValue(int oldValue, int newValue)
     {
         Debug.Log("SetNewHealthValue = Mathf.RoundToInt(newValue): " + Mathf.RoundToInt(newValue));
         healthBar.SetStat(Mathf.RoundToInt(newValue));

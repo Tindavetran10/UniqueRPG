@@ -16,7 +16,7 @@ public class TakeDamageEffect : InstantCharacterEffect
     public float holyDamage = 0;
 
     [Header("Final Damage")]
-    public float finalDamageDealt = 0; // The damage the character takes after ALL calculations have been made
+    public int finalDamageDealt = 0; // The damage the character takes after ALL calculations have been made
 
     // (To Do) Build Ups
     // Build up effect amount

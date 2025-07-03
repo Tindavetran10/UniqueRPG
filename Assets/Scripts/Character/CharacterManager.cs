@@ -13,6 +13,7 @@ public class CharacterManager : NetworkBehaviour
 
     [HideInInspector] public CharacterNetworkManager characterNetworkManager;
     [HideInInspector] public CharacterEffectsManager characterEffectsManager;
+    [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
 
     [Header("Flags")]
     public bool isPerformingAction = false;
@@ -30,6 +31,7 @@ public class CharacterManager : NetworkBehaviour
         animator = GetComponent<Animator>();
         characterNetworkManager = GetComponent<CharacterNetworkManager>();
         characterEffectsManager = GetComponent<CharacterEffectsManager>();
+        characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
     }
 
     protected virtual void Update()
@@ -58,6 +60,37 @@ public class CharacterManager : NetworkBehaviour
     }
 
     protected virtual void LateUpdate()
+    {
+
+    }
+
+    public virtual IEnumerator ProcessDeathEvent(bool manuallySelectDeathAnimation = false)
+    {
+        if (IsOwner)
+        {
+            characterNetworkManager.currentHealth.Value = 0;
+            isDead.Value = true;
+
+            // Reset any flags here that need to be reset 
+
+            // If not grounded, Play an Aerial death animation
+
+            if (!manuallySelectDeathAnimation)
+            {
+                characterAnimatorManager.PlayerTargetActionAnimation("Dead_01", true);
+            }
+        }
+
+        // Play some death SFX
+
+        yield return new WaitForSeconds(5);
+
+        // Award Players with runes
+
+        // Disable character
+    }
+
+    public virtual void ReviveCharacter()
     {
 
     }
