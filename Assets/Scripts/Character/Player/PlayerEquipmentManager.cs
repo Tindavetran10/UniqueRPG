@@ -127,7 +127,7 @@ public class PlayerEquipmentManager : CharacterEquipmentManager
             }
         }
 
-        if (selectedWeapon == null && player.playerInventoryManager.rightHandWeaponIndex < 2)
+        if (selectedWeapon == null && player.playerInventoryManager.rightHandWeaponIndex <= 2)
         {
             SwitchRightWeapon();
         }
